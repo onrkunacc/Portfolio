@@ -3303,10 +3303,11 @@ html.no-csstransitions .home-content__main {
 
 footer {
     font-family: "montserrat-regular", sans-serif;
-    font-size: 14px;
+    font-size: 15px;
     padding: 6.6rem 0 4.2rem;
     text-align: center;
-    color: rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255 , 0.2);
+    background-color : rgba(0, 0, 0, 0.91);
 }
 
 footer a, footer a:visited {
@@ -3387,12 +3388,13 @@ footer a:hover, footer a:focus {
     display: inline-block;
 }
 
-.footer-bottom .copyright span::after {
-    content: "|";
-    display: inline-block;
-    padding: 0 1rem 0 1.2rem;
-    color: rgba(255, 255, 255, 0.1);
-}
+    .footer-bottom .copyright span::after {
+        content: "|";
+        display: inline-block;
+        padding: 0 1rem 0 1.2rem;
+        color: rgba(255, 255, 255, 0.1);
+        background-color: rgba(0, 0, 0, 0.91);
+    }
 
 .footer-bottom .copyright span:last-child::after {
     display: none;
