@@ -10,7 +10,7 @@ using Portfolio.DAL.Context;
 
 namespace Portfolio.Migrations
 {
-    [DbContext(typeof(PortfolioContext))]
+    [DbContext(typeof(PortfolioDbContext))]
     partial class PortfolioContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

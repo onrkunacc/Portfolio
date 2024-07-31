@@ -5,13 +5,17 @@ namespace Portfolio.ViewComponents
 {
     public class _AboutComponentPartial :ViewComponent
     {
-        PortfolioContext portfolioContext = new PortfolioContext();
+        private readonly PortfolioDbContext context;
+        public _AboutComponentPartial(PortfolioDbContext dbContext)
+        {
+            context = dbContext;
+        }
 
         public IViewComponentResult Invoke()
         {
-            ViewBag.aboutTitle = portfolioContext.Abouts.Select(x => x.Title).FirstOrDefault();
-            ViewBag.aboutSubDescription = portfolioContext.Abouts.Select(x => x.SubDescription).FirstOrDefault();
-            ViewBag.aboutDetail = portfolioContext.Abouts.Select(x => x.Details).FirstOrDefault();
+            ViewBag.aboutTitle = context.Abouts.Select(x => x.Title).FirstOrDefault();
+            ViewBag.aboutSubDescription = context.Abouts.Select(x => x.SubDescription).FirstOrDefault();
+            ViewBag.aboutDetail = context.Abouts.Select(x => x.Details).FirstOrDefault();
             return View();
         }
     }

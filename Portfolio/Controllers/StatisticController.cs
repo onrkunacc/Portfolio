@@ -5,8 +5,12 @@ namespace Portfolio.Controllers
 {
 	public class StatisticController : Controller
 	{
-		PortfolioContext context = new PortfolioContext();
-		public IActionResult Index()
+        private readonly PortfolioDbContext context;
+        public StatisticController(PortfolioDbContext dbContext)
+        {
+            context = dbContext;
+        }
+        public IActionResult Index()
 		{
 			ViewBag.v1 = context.Skills.Count();
 			ViewBag.v2 = context.Messages.Count();

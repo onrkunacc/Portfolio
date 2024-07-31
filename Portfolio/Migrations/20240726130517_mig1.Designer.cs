@@ -11,7 +11,7 @@ using Portfolio.DAL.Context;
 
 namespace Portfolio.Migrations
 {
-    [DbContext(typeof(PortfolioContext))]
+    [DbContext(typeof(PortfolioDbContext))]
     [Migration("20240726130517_mig1")]
     partial class mig1
     {

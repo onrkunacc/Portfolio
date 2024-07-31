@@ -6,7 +6,11 @@ namespace Portfolio.Controllers
 {
     public class ExperienceController : Controller
     {
-        PortfolioContext context = new PortfolioContext();
+        private readonly PortfolioDbContext context;
+        public ExperienceController(PortfolioDbContext dbContext)
+        {
+            context = dbContext;
+        }
         public IActionResult ExperienceList()
         {
             var values = context.Experiences.ToList();

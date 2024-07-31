@@ -13,20 +13,19 @@
 
     <div class="row contact__main">
         <div class="col-eight tab-full contact__form">
-            <form name="contactForm" id="contactForm" method="post" action="">
+            <form id="contactForm" method="post" asp-controller="Message" asp-action="SubmitMessage">
                 <fieldset>
-
                     <div class="form-field">
-                        <input name="contactName" type="text" id="contactName" placeholder="Name" value="" minlength="2" required="" aria-required="true" class="full-width">
+                        <input name="NameSurname" type="text" id="contactName" placeholder="Name Surname" value="" minlength="2" required="" aria-required="true" class="full-width">
                     </div>
                     <div class="form-field">
-                        <input name="contactEmail" type="email" id="contactEmail" placeholder="Email" value="" required="" aria-required="true" class="full-width">
+                        <input name="Email" type="email" id="contactEmail" placeholder="Email" value="" required="" aria-required="true" class="full-width">
                     </div>
                     <div class="form-field">
-                        <input name="contactSubject" type="text" id="contactSubject" placeholder="Subject" value="" class="full-width">
+                        <input name="Subject" type="text" id="contactSubject" placeholder="Subject" value="" class="full-width">
                     </div>
                     <div class="form-field">
-                        <textarea name="contactMessage" id="contactMessage" placeholder="message" rows="10" cols="50" required="" aria-required="true" class="full-width"></textarea>
+                        <textarea name="MessageDetail" id="contactMessage" placeholder="message" rows="10" cols="50" required="" aria-required="true" class="full-width"></textarea>
                     </div>
                     <div class="form-field">
                         <button class="full-width btn--primary">Submit</button>
@@ -77,3 +76,37 @@
     </div>
 
 </section>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#contactForm').submit(function (e) {
+            e.preventDefault();
+
+            $.ajax({
+                url: '/Message/SubmitMessage',
+                type: 'POST',
+                data: $(this).serialize(),
+                beforeSend: function () {
+                    $('.submit-loader').slideDown("slow");
+                },
+                success: function (response) {
+                    if (response.success) {
+                        $('.submit-loader').slideUp("slow");
+                        $('.message-warning').fadeOut();
+                        $('#contactForm').fadeOut();
+                        $('.message-success').fadeIn();
+                    } else {
+                        $('.submit-loader').slideUp("slow");
+                        $('.message-warning').html(response);
+                        $('.message-warning').slideDown("slow");
+                    }
+                },
+                error: function () {
+                    $('.submit-loader').slideUp("slow");
+                    $('.message-warning').html("Something went wrong. Please try again.");
+                    $('.message-warning').slideDown("slow");
+                }
+            });
+        });
+    });
+</script>
