@@ -11,7 +11,7 @@ namespace Portfolio.DAL.Context
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=localhost\\SQL2017;Initial Catalog=PortfolioDb;Integrated Security=true;Trusted_Connection=True;TrustServerCertificate=True;");
+            optionsBuilder.UseSqlServer("Server=89.252.183.170\\MSSQLSERVER2019;Database =onrkncco_portfolioDb;user=onrkncco_admin;password =nO9771yn&;TrustServerCertificate=True;");
         }
         public DbSet<About> Abouts { get; set; }
         public DbSet<Contact> Contacts { get; set; }
